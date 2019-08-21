@@ -1,0 +1,11 @@
+<h2>You chose this celebrity:</h2>
+
+<h3>{{ celebrity.name }} </h3>
+<p>{{ celebrity.occupation }}</p>
+<p><i>{{ celebrity.catchPhrase }}</i></p>
+
+<a href="/celebrities/{{celebrity._id}}/edit">Edit this celebrity</a>
+
+<form action="/celebrities/{{celebrity._id}}/delete" method="POST">
+    <input type="submit" value="delete">
+</form>

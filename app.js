@@ -6,10 +6,12 @@ const logger = require("morgan");
 const mongoose = require("mongoose");
 
 mongoose.connect("mongodb://localhost/celebrities", { useNewUrlParser: true });
+//mongoose.connect("mongodb://localhost/films", { useNewUrlParser: true });
 
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const celebritiesRouter = require("./routes/celebrities");
+const moviesRouter = require("./routes/movies");
 
 const app = express();
 
@@ -26,6 +28,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/celebrities", celebritiesRouter);
+app.use("/movies", moviesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

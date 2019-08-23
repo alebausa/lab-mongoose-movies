@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Celebrity = require("../models/Celebrity");
+const Movie = require("../models/Movie");
 
 mongoose.connect("mongodb://localhost/celebrities", { useNewUrlParser: true });
 
@@ -20,6 +21,33 @@ var celebrities = [
     catchPhrase: "Friends. don't. lie"
   }
 ];
+
+var movies = [
+  {
+    title: "The dead poets society",
+    genre: "Drama",
+    plot: "A movie about following your dreams in life"
+  },
+  {
+    title: "IronHack The Movie",
+    genre: "Terror",
+    plot: "A group of students lose their minds trying to understand"
+  },
+  {
+    title: "Bridget Jones Diary",
+    genre: "Romantic comedy",
+    plot: "Bridget is about to find real love... at the end of a bottle"
+  }
+];
+
+Movie.create(movies)
+  .then(movie => {
+    console.log("inserted movie ", movie);
+  })
+  .catch(err => {
+    console.log(err);
+    mongoose.connection.close();
+  });
 
 Celebrity.create(celebrities)
   .then(celebrity => {
